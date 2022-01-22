@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      :root {
+
+      }
+.box{
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  background-color: pink;
+  transition: all 3s ease;
+}
+.box1:hover{
+  background-color: blueviolet;
+  transition-property: background-color;
+  transition-duration: 600ms;
+  transition-timing-function: linear;
+}
+.box2:hover{
+  background-color: blueviolet;
+border-radius: 100%;
+transition: all 2s ease;
+
+}
+.box3:hover{
+  background-color: blueviolet;
+border-radius: 100%;
+transform: translateX(400px);
+
+transition: all 3s ease;
+
+}
+
+
+
+        </style>
+</head>
+<body>
+<div class="box box1"></div>
+<div class="box box2"></div>
+<div class="box box3"></div>   
+     
+</body>
+</html>
