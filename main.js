@@ -43,8 +43,8 @@ homeContacBtn.addEventListener('click', () => {
    
     scrollIntoView('#contact');
     
-    // const scrollTo =document.querySelector('#contact');
-    // scrollTo.scrollIntoView(); 
+    const scrollTo =document.querySelector('#contact');
+    scrollTo.scrollIntoView(); 
 });
 
 
