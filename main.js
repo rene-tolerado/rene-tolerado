@@ -44,7 +44,7 @@ homeContacBtn.addEventListener('click', () => {
     scrollIntoView('#contact');
     
     const scrollTo =document.querySelector('#contact');
-    scrollTo.scrollIntoView(); 
+    scrollTo.scrollIntoView({behavior: 'smooth'}); 
 });
 
 
@@ -68,7 +68,7 @@ document.addEventListener('scroll', () => {
 //  Handle click on the "arrow up" button
 arrowUp.addEventListener('click', () => {
     scrollIntoView('#home');
-})
+});
 // Projects 
 const workBtnContainer = document.querySelector('.work__categories');
 const ProjectContainer = document.querySelector('.work__projects');
