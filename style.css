@@ -384,7 +384,7 @@ p {
 .contact__title,
 .contact__email,
 .contact__rights {
-  color: var(--color-white);
+  color: var(--color-grey);
 }
 .contact__title {
   margin: 32px 0;
@@ -420,7 +420,7 @@ p {
   pointer-events: auto;
 }
 /* for below 768px screen width */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .navbar__toggle-btn {
     display: block;
   }
