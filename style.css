@@ -102,8 +102,9 @@ p {
 
 .navbar__logo {
   font-size: var(--font-small);
+  color: var(--color-dark-white);
   font-weight: var(--weight-semi-bold);
-  margin: 0 10px;
+  margin: 10px;
 }
 .navbar__menu {
   display: flex;
@@ -112,7 +113,7 @@ p {
 .navbar__menu_item {
   padding: 8px 12px;
   margin: 0 6px;
-  color: var(--color-white); /* kkk*/
+  color: var(--color-black); /* kkk*/
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: var(--size-border-radius);
@@ -352,7 +353,7 @@ p {
 .testimonials {
   margin: 40px;
 }
-.testimonial {
+.testimonials {
   display: flex;
   margin: 40px 0;
 }
@@ -383,6 +384,8 @@ p {
 /* contact */
 #contact {
   background-color: var(--color-blue);
+  padding-top: 1px;
+  text-align: center;
 }
 .contact__title,
 .contact__email,
@@ -393,11 +396,11 @@ p {
   margin: 32px 0;
 }
 .contact__links {
-  font-size: var(--font-large);
+  font-size: var(--font-medium);
   margin: 24px 0;
 }
 .contact__links i:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
   color: var(--color-light-grey);
   transition: all var(--animation-duration) ease-in;
 }
