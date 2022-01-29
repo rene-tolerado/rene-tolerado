@@ -38,13 +38,12 @@ navbarMenu.classList.toggle('open');
 
 //  Handle click on "contac me" on home
 
-const homeContacBtn = document.querySelector('.home__contact');
-homeContacBtn.addEventListener('click', () => {
-   
+const ContacBtn = document.querySelector('.home__contact');
+ContacBtn.addEventListener('click', () => {
     scrollIntoView('#contact');
     
-    const scrollTo =document.querySelector('#contact');
-    scrollTo.scrollIntoView({behavior: 'smooth'}); 
+    // const scrollTo =document.querySelector('#contact');
+    // scrollTo.scrollIntoView({behavior: 'smooth'}); 
 });
 
 
@@ -52,8 +51,8 @@ homeContacBtn.addEventListener('click', () => {
 const home = document.querySelector('.home__container');
 const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
-    // console.log(1 - window.scrollY / homeHeight);
-    home.style.opacity = 1 - window.scrollY / homeHeight;
+    console.log(1 - window.scrollY / homeHeight);
+    home.style.opacity = 1 - window.scrollY / homeHeight;//1 (붍투명)
 });
 
 //  Show "arrow up" button when scrolling down
@@ -88,7 +87,7 @@ workBtnContainer.addEventListener('click', (e) => {
   e.target.classList.add('selected'); 
 
 ProjectContainer.classList.add('anim-out');
-   // console.log(filter);
+   console.log(filter);
    
     setTimeout(() => {
          Projects.forEach((Project) => {
@@ -105,5 +104,8 @@ ProjectContainer.classList.add('anim-out');
 
  function scrollIntoView(selector) {
     const scrollTo =document.querySelector(selector);
-    scrollTo.scrollIntoView(); 
- }
+    scrollTo.scrollIntoView({ 
+    behavior: 'smooth',
+    block: 'start'
+ });
+}
