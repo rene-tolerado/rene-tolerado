@@ -19,7 +19,7 @@
   --font-medium: 28px;
   --font-regular: 18px;
   --font-small: 16px;
-  --font-micro: 14px;
+  --font-micro: 10px;
 
   /* font font-weight */
 
@@ -118,9 +118,6 @@ p {
   border: 1px solid transparent;
   border-radius: var(--size-border-radius);
 }
-.navbar__menu_item.active {
-  border: 1px solid var(--color-white);
-}
 .navbar__menu_item:hover {
   border-color: var(--color-white);
   background-color: var(--color-dark-grey);
@@ -128,7 +125,7 @@ p {
 
 .navbar__toggle-btn {
   position: absolute;
-  top: 38px;
+  top: 16px;
   right: 32px;
   font-size: 24px;
   color: var(--color-white);
@@ -160,16 +157,13 @@ p {
   border: 2px solid var(--color-light-grey);
   border-radius: var(--size-border-radius);
 }
-.home__contact:hover {
-  background-color: var(--color-orange);
-}
 /* Section common */
 .section {
   padding: 50px;
   text-align: center;
   margin: auto;
 }
-.section-container {
+.section__container {
   max-width: 900px;
   margin: auto;
 }
@@ -261,7 +255,7 @@ p {
 }
 .category__btn.selected,
 .category__btn:hover {
-  background-color: var(--color-dark-pink);
+  background-color: var(--color-blue);
   color: var(--color-white);
 }
 .category__btn.selected .category__count,
@@ -270,8 +264,8 @@ p {
   top: 0;
 }
 .category__count {
-  border: 1px solid var(--color-orange);
-  background-color: var(--color-orange);
+  border: 1px solid var(--color-black);
+  background-color: var(--color-black);
   border-radius: 50%;
   color: var(--color-white);
   width: 24px;
@@ -312,7 +306,7 @@ p {
 .project__img {
   max-width: 100%;
   max-height: 100%;
-  align-self: center; /*kkk*/
+  align-self: center;
 }
 .project__description {
   position: absolute;
@@ -333,7 +327,7 @@ p {
   transform: translateY(0px);
 }
 .project__description h3 {
-  color: var(--color-orange);
+  color: var(--color-blue);
 }
 .project__description h3:after {
   content: "";
@@ -360,7 +354,7 @@ p {
 .testimonial__avatar {
   width: 130px;
   height: 130px;
-  border-radius: 1%;
+  border-radius: 50%;
 }
 .testimonial__avatar:nth-child(odd) {
   margin-right: 40px;
@@ -386,23 +380,29 @@ p {
   background-color: var(--color-blue);
   padding-top: 1px;
   text-align: center;
+  padding-bottom: 1px;
 }
 .contact__title,
 .contact__email,
 .contact__rights {
   color: var(--color-grey);
 }
+.contact__rights {
+  font-size: var(--font-micro);
+  text-align: left;
+  margin-left: 0px;
+}
 .contact__title {
   margin: 32px 0;
 }
 .contact__links {
-  font-size: var(--font-medium);
+  font-size: var(--font-small);
   margin: 24px 0;
+  transition: all var(--animation-duration) ease-in;
 }
 .contact__links i:hover {
   transform: scale(1.2);
   color: var(--color-light-grey);
-  transition: all var(--animation-duration) ease-in;
 }
 
 /* Scroll */
@@ -429,13 +429,12 @@ p {
 @media screen and (max-width: 768px) {
   .navbar__toggle-btn {
     display: block;
-    color: var(--color-white);
+    /* color: var(--color-white); */
   }
   #navbar {
     flex-direction: column;
     align-items: flex-start;
     background-color: var(--color-dark-grey);
-    /* padding: 16px; */
   }
   #navbar.navbar--dark {
     padding: 16px;

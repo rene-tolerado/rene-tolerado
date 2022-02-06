@@ -3,8 +3,6 @@
 const navbar = document.querySelector('#navbar');
 const navbarHeight = navbar.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
-    // console.log(window.scrollY);
-    // console.log(`navHeight: ${navbarHeight}`);
     if (window.scrollY > navbarHeight) {
         navbar.classList.add('navbar--dark');
     } else{
@@ -22,7 +20,6 @@ navbarMenu.addEventListener('click', (event) =>
     if (link == null) {
         return;
     }
-    // console.log(event.target.dataset.link);
     navbarMenu.classList.remove('open');
     scrollIntoView(link);
   
@@ -30,20 +27,19 @@ navbarMenu.addEventListener('click', (event) =>
 
 // Navbar toggle button for small screen
 
-const navbarToggleBtn = document.querySelector('.navar__toggle-btn');
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
 navbarToggleBtn.addEventListener('click', () => {
-navbarMenu.classList.toggle('open');
+  navbarMenu.classList.toggle('open');
 });
+
 
 
 //  Handle click on "contac me" on home
 
-const ContacBtn = document.querySelector('.home__contact');
-ContacBtn.addEventListener('click', () => {
+const homeContacBtn = document.querySelector('.home__contact');
+homeContacBtn.addEventListener('click', () => {
     scrollIntoView('#contact');
     
-    // const scrollTo =document.querySelector('#contact');
-    // scrollTo.scrollIntoView({behavior: 'smooth'}); 
 });
 
 
@@ -105,7 +101,6 @@ ProjectContainer.classList.add('anim-out');
  function scrollIntoView(selector) {
     const scrollTo =document.querySelector(selector);
     scrollTo.scrollIntoView({ 
-    behavior: 'smooth',
-    block: 'start'
+    behavior: 'smooth'
  });
 }
