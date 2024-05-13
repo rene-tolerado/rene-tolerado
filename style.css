@@ -467,4 +467,11 @@ p {
     width: 100px;
     height: 100px;
   }
+  .arrow-up {
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+    bottom: 40px;
+    right: 30px;
+  }
 }
