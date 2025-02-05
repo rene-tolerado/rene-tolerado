@@ -139,12 +139,12 @@ p {
   padding-top: 120px;
   text-align: center;
 }
-.home_avatar {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 2px solid var(--color-light-grey);
-}
+/* .home_avatar { */
+/* width: 200px; */
+/* height: 200px; */
+/* border-radius: 50%; */
+/* border: 2px solid var(--color-light-grey); */
+/* } */
 .home__title,
 .home__description {
   color: var(--color-white);
