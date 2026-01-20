@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제조혁신 지원사업 통합 솔루션 | (주)리더스알앤디</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 기본 설정 */
+        html { scroll-behavior: smooth; }
+        :root {
+            --primary: #007bff;
+            --secondary: #17a2b8;
+            --accent: #fd7e14;
+            --dark: #343a40;
+            --light: #f8f9fa;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', 'Noto Sans KR', sans-serif; }
+        body { line-height: 1.6; color: #333; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .text-center { text-align: center; }
+        .section-padding { padding: 80px 0; }
+
+        /* [기존 설정] 메뉴 클릭 시 섹션을 위로 바짝 당기는 설정 */
+        section {
+            scroll-margin-top: -80px; 
+        }
+
+        /* ★★★ [추가된 수정 코드] ★★★ */
+        /* 맨 위(Home) 섹션만 예외적으로 당기지 않고 정위치(0)에 둡니다. */
+        #home {
+            scroll-margin-top: 0px !important; 
+        }
+        
+        /* 버튼 스타일 */
+        .btn { display: inline-block; padding: 12px 30px; border-radius: 5px; font-weight: bold; transition: 0.3s; cursor: pointer; }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-primary:hover { background: #0056b3; }
+        .btn-accent { background: var(--accent); color: #fff; }
+        .btn-accent:hover { background: #e36209; }
+
+        /* 헤더 */
+        header { 
+            background: rgba(0,0,0,0.3); 
+            position: absolute; 
+            top: 0; left: 0; width: 100%; z-index: 100; 
+        }
+        nav { 
+            display: flex; justify-content: space-between; align-items: center; padding: 15px 0;
+        }
+        
+       /* 로고 */
+        .logo { 
+            font-size: 24px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px;
+        }
+        .logo i { font-size: 28px; color: var(--accent); } 
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { 
+            font-weight: 500; font-size: 1.1rem; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* 히어로 섹션 */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover; background-position: center;
+            height: 600px; display: flex; align-items: center; text-align: center; color: #fff;
+            padding-top: 80px;
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; word-break: keep-all; }
+        .hero p { font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; word-break: keep-all; }
+        
+        .section-title { font-size: 2.5rem; margin-bottom: 10px; color: var(--dark); text-align: center; }
+        .section-desc { text-align: center; margin-bottom: 40px; color: #666; }
+
+        /* 가격정책표 */
+        .pricing-section { background: #fff; text-align: center; padding: 100px 0; }
+        .price-table {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px;
+        }
+        .price-card {
+            background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 30px; width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s;
+        }
+        .price-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: var(--primary); }
+        .price-card.popular { border: 2px solid var(--primary); position: relative; }
+        .price-card.popular::after { content: '추천'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; }
+        .price-header { font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; }
+        .price-amount { font-size: 2rem; color: var(--primary); font-weight: 800; margin-bottom: 20px; }
+        .price-features li { margin-bottom: 10px; color: #666; font-size: 0.95rem; }
+
+        /* 서비스 카드 */
+        .services { background: var(--light); }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-top: 5px solid transparent; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .card.factory { border-top-color: var(--primary); }
+        .card.gongbang { border-top-color: var(--secondary); }
+        .card.root { border-top-color: var(--dark); }
+        .card h3 { font-size: 1.8rem; margin-bottom: 15px; }
+        .card .target { font-size: 0.9rem; color: #666; background: #eee; padding: 5px 10px; border-radius: 20px; display: inline-block; margin-bottom: 20px; }
+        .card ul li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .card ul li::before { content: '✔'; color: var(--primary); position: absolute; left: 0; }
+        
+        /* 통계 및 프로세스 */
+        .stats { background: var(--primary); color: #fff; padding: 60px 0; }
+        .stats-grid { display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; }
+        .stat-item h3 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
+        
+        .process-steps { display: flex; justify-content: space-between; margin-top: 50px; flex-wrap: wrap; }
+        .step { flex: 1; text-align: center; padding: 20px; min-width: 200px; }
+        .step-icon { width: 80px; height: 80px; background: #e9ecef; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px; font-size: 30px; color: var(--primary); }
+
+        /* 문의 폼 */
+        .contact-form { max-width: 600px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; }
+        .submit-btn { width: 100%; background: var(--dark); color: #fff; padding: 15px; border: none; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
+        .submit-btn:hover { background: #000; }
+
+        footer { background: #212529; color: #adb5bd; padding: 50px 0; text-align: center; }
+
+        /* 맨 위로 가기 버튼 */
+        .home-btn {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            width: 50px; height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+        .home-btn:hover { background-color: var(--dark); transform: translateY(-5px); }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .logo { font-size: 20px; }
+            .process-steps { flex-direction: column; }
+            .price-card { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fas fa-chart-line"></i> (주)리더스알앤디
+                </a>
+                
+                <div class="nav-links">
+                    <a href="#pricing">가격정책</a> 
+                    <a href="#services">지원사업 소개</a>
+                    <a href="#process">진행절차</a>
+                    <a href="#contact" class="btn btn-primary" style="padding: 8px 20px; font-size: 1rem;">상담신청</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>제조업의 미래,<br>정부지원사업으로 시작하세요</h1>
+            <p>(주)리더스알앤디가 복잡한 승인 프로세스를 원스톱으로 해결해 드립니다.</p>
+            <a href="#contact" class="btn btn-accent">우리 기업 지원금 조회하기</a>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">서비스 가격 정책</h2>
+            <p class="section-desc">기업 규모에 맞는 합리적인 컨설팅 비용을 제안합니다.</p>
+            
+            <div class="price-table">
+                <div class="price-card">
+                    <div class="price-header">스타트업 패키지</div>
+                    <div class="price-amount">무료 상담</div>
+                    <ul class="price-features">
+                        <li>기업 현황 기초 진단</li>
+                        <li>지원 가능 사업 조회</li>
+                        <li>유선/이메일 상담</li>
+                        <li>사업계획서 가이드 제공</li>
+                    </ul>
+                </div>
+                <div class="price-card popular">
+                    <div class="price-header">스마트팩토리 구축</div>
+                    <div class="price-amount">정부지원 50%</div>
+                    <ul class="price-features">
+                        <li>현장 정밀 진단 및 로드맵</li>
+                        <li>사업계획서 작성 대행</li>
+                        <li>MES/ERP 솔루션 구축</li>
+                        <li>현장 감리 및 사후관리</li>
+                    </ul>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">스마트공방</div>
+                    <div class="price-amount">Saas형 MES 시스템</div>
+                    <ul class="price-features">
+                        <li>월 임차료 2,800,000원</li>
+                        <li>MES 시스템 사용</li>
+                        <li>현장센서 및 IOT 시스템</li>
+                        <li>월별 자동 백업</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding services">
+        <div class="container">
+            <h2 class="section-title">맞춤형 지원사업 안내</h2>
+            <div class="card-grid">
+                <div class="card factory">
+                    <span class="target">중소·중견 제조기업</span>
+                    <h3>스마트팩토리</h3>
+                    <ul>
+                        <li>구축비용의 50% 지원</li>
+                        <li>재고관리, 품질분석, 실시간 모니터링</li>
+                        <li>자동화 생산 설비 / 로봇 / AI 지원</li>
+                        <li>도입 기업 평균 생산성 30% 증가</li>
+                    </ul>
+                </div>
+                <div class="card gongbang">
+                    <span class="target">소공인 (10인 미만)</span>
+                    <h3>스마트공방</h3>
+                    <ul>
+                        <li>업체당 최대 4,200만원 지원</li>
+                        <li>생산공정관리 솔루션 (MES)</li>
+                        <li>소량 다품종 생산 최적화 솔루션</li>
+                        <li>자동화 장비 도입 지원</li>
+                    </ul>
+                </div>
+                <div class="card root">
+                    <span class="target">6대 뿌리산업 및 플러스</span>
+                    <h3>뿌리기업 지원</h3>
+                    <ul>
+                        <li>시제품제작 및 노후부품 교체</li>
+                        <li>뿌리기술 ISO 인증 지원</li>
+                        <li>마케팅, 특허 출원 등</li>
+                        <li>공정 자동화 및 환경 개선</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item"><h3>95%</h3><p>사업 선정 승인률</p></div>
+                <div class="stat-item"><h3>500+</h3><p>누적 컨설팅 기업</p></div>
+                <div class="stat-item"><h3>200억+</h3><p>누적 정부지원금 확보</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">컨설팅 진행 절차</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-search"></i></div>
+                    <h4>1. 기업 진단</h4>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+                    <h4>2. 사업계획서</h4>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                    <h4>3. 신청 및 평가</h4>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-cogs"></i></div>
+                    <h4>4. 구축 및 완료</h4>
+               </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding" style="background: #f1f3f5;">
+        <div class="container">
+            <h2 class="section-title">* 무료 사전 진단 신청 *</h2>
+            <div class="contact-form">
+                <form action="https://formsubmit.co/leadersrnd@naver.com" method="POST">
+                    <input type="hidden" name="_next" value="http://leadersrnd.com">
+                    <input type="hidden" name="_subject" value="(주)리더스알앤디 상담 신청이 도착했습니다!">
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <div class="form-group">
+                        <label>회사명</label>
+                        <input type="text" name="company_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>연락처</label>
+                        <input type="tel" name="contact_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>관심 분야</label>
+                        <select name="interest">
+                            <option value="스마트팩토리">스마트팩토리</option>
+                            <option value="스마트공방">스마트공방</option>
+                            <option value="뿌리기업">뿌리기업</option>
+                            <option value="기타">기타 문의</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>문의 내용</label>
+                        <textarea rows="4" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">상담 신청하기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 10px; font-weight: bold; color: #fff;">(주)리더스알앤디</p>
+            <p>주소: 경기도 시흥시 마유로 376, 502호</p>
+            <p class="copyright">© 2026 Leaders R&D. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="#home" class="home-btn" title="맨 위로 가기">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+</body>
+</html>
